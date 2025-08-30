@@ -3,7 +3,8 @@ from django.conf import settings
 from django.core.validators import MinValueValidator, MaxValueValidator
 
 class Client(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='client_profile')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='clients')
+    name = models.CharField(max_length=100, blank=True, null=True)
     client_id = models.CharField(max_length=20, unique=True)
     home_location = models.CharField(max_length=100)
     work_location = models.CharField(max_length=100)

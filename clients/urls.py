@@ -1,10 +1,6 @@
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from .views import ClientViewSet
-
-router = DefaultRouter()
-router.register(r'clients', ClientViewSet, basename='client')
+from django.urls import path
+from . import views
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('loan/request/', views.loan_request, name='loan-request'),
 ]
